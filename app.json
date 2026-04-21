@@ -14,15 +14,30 @@
       "bundleIdentifier": "com.sean.portfolio",
       "buildNumber": "1",
       "infoPlist": {
-        "UIBackgroundModes": ["fetch"]
+        "UIBackgroundModes": [
+          "fetch",
+          "fetch"
+        ]
       }
     },
     "android": {
-      "package": "com.sean.portfolio"
+      "package": "com.sean.portfolio",
+      "permissions": [
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.WAKE_LOCK",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.WAKE_LOCK"
+      ]
     },
     "web": {
       "bundler": "metro",
       "output": "single"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/707b44b1-c0c0-45de-bcbb-9a72b6584774",
+      "enabled": true,
+      "fallbackToCacheTimeout": 0,
+      "checkAutomatically": "ON_LOAD"
     },
     "plugins": [
       "expo-router",
@@ -36,6 +51,9 @@
         "projectId": "707b44b1-c0c0-45de-bcbb-9a72b6584774"
       }
     },
-    "owner": "seanbroughton"
+    "owner": "seanbroughton",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
   }
 }
