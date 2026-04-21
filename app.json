@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "My Portfolio",
+    "slug": "portfolio-tracker",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "portfolio",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#000000"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.sean.portfolio",
+      "buildNumber": "1",
+      "infoPlist": {
+        "UIBackgroundModes": ["fetch"]
+      }
+    },
+    "android": {
+      "package": "com.sean.portfolio"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-background-fetch"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "707b44b1-c0c0-45de-bcbb-9a72b6584774"
+      }
+    },
+    "owner": "seanbroughton"
+  }
+}
