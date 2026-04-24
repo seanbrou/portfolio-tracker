@@ -1,4 +1,4 @@
-import StockDetailScreen from "../../src/screens/StockDetailScreen.js";
+import StockDetailScreen from "../../src/screens/StockDetailScreen";
 
 export default function StockScreen() {
   return <StockDetailScreen />;

@@ -6,6 +6,7 @@ import { DonutChart } from "../components/Charts";
 import { HOLDINGS, CASH_BALANCE } from "../data/holdings";
 import { useLivePrices, getPriceData } from "../hooks/useLivePrices";
 import { colors } from "../utils/styles";
+import LiquidGlass from "../components/LiquidGlass";
 
 function fmt$(n) {
   return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -34,9 +35,9 @@ export default function HoldingsScreen({ navigation }) {
       <View style={s.header}>
         <Text style={s.headerTitle}>Holdings</Text>
       </View>
-      <View style={s.chartSection}>
+      <LiquidGlass style={[s.chartSection, {marginHorizontal: 20, paddingVertical: 16}]} intensity={50}>
         <DonutChart data={donutData} size={160} />
-      </View>
+      </LiquidGlass>
 
       <View style={s.tableHeader}>
         <Text style={s.th}>Symbol</Text>
@@ -51,8 +52,8 @@ export default function HoldingsScreen({ navigation }) {
           const gainPct = ((gain / h.costBasis) * 100).toFixed(2);
           const isUp = gain >= 0;
           return (
+            <LiquidGlass key={h.symbol} style={{marginHorizontal: 20, marginBottom: 8}} intensity={40} radius={14}>
             <TouchableOpacity
-              key={h.symbol}
               style={s.row}
               onPress={() => navigation.navigate("stock", { symbol: h.symbol })}
             >
@@ -71,9 +72,11 @@ export default function HoldingsScreen({ navigation }) {
                 </Text>
               </View>
             </TouchableOpacity>
+            </LiquidGlass>
           );
         })}
 
+        <LiquidGlass style={{marginHorizontal: 20, marginTop: 8}} intensity={40} radius={14}>
         <View style={[styles.row, s.cashRow]}>
           <View style={{ flex: 1 }}>
             <Text style={s.symbol}>USD</Text>
@@ -83,6 +86,7 @@ export default function HoldingsScreen({ navigation }) {
             <Text style={s.valueText}>{fmt$(CASH_BALANCE)}</Text>
           </View>
         </View>
+        </LiquidGlass>
         <View style={{ height: 120 }} />
       </ScrollView>
     </View>
@@ -110,5 +114,5 @@ const s = StyleSheet.create({
   costText: { fontSize: 11, textAlign: "right", marginTop: 1 },
   green: { color: colors.green },
   red: { color: colors.red },
-  cashRow: { padding: 16, backgroundColor: colors.card },
+  cashRow: { padding: 16 },
 });

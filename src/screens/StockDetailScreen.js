@@ -6,6 +6,7 @@ import { AreaChart } from "../components/Charts";
 import { HOLDINGS, stockPriceHistory } from "../data/holdings";
 import { useLivePrices, getPriceData } from "../hooks/useLivePrices";
 import { colors } from "../utils/styles";
+import LiquidGlass from "../components/LiquidGlass";
 
 const PERIODS = ["1M", "3M", "6M", "1Y", "ALL"];
 
@@ -76,7 +77,7 @@ export default function StockDetailScreen({ route }) {
           />
         </View>
 
-        <View style={s.statsCard}>
+        <LiquidGlass style={s.statsCard} intensity={50}>
           <View style={s.statRow}>
             <View style={s.statLeft}>
               <Text style={s.statLabel}>Day Range</Text>
@@ -113,9 +114,9 @@ export default function StockDetailScreen({ route }) {
               </Text>
             </View>
           </View>
-        </View>
+        </LiquidGlass>
 
-        <View style={s.performanceCard}>
+        <LiquidGlass style={s.performanceCard} intensity={50}>
           <Text style={s.sectionTitle}>Performance</Text>
           <View style={s.perfRow}>
             <Text style={s.perfLabel}>1 Week</Text>
@@ -135,7 +136,7 @@ export default function StockDetailScreen({ route }) {
               {stock.yearChange >= 0 ? "+" : ""}{stock.yearChange}%
             </Text>
           </View>
-        </View>
+        </LiquidGlass>
 
         <View style={{ height: 100 }} />
       </ScrollView>
@@ -162,13 +163,13 @@ const s = StyleSheet.create({
   pillText: { color: colors.gray, fontSize: 13, fontWeight: "600" },
   pillTextActive: { color: colors.green, fontSize: 13, fontWeight: "600" },
   chartContainer: { marginTop: 12, paddingHorizontal: 10 },
-  statsCard: { backgroundColor: colors.card, borderRadius: 16, marginHorizontal: 20, marginTop: 20, overflow: "hidden" },
+  statsCard: { borderRadius: 16, marginHorizontal: 20, marginTop: 20, overflow: "hidden" },
   statRow: { padding: 16 },
   statLeft: { flex: 1 },
   statLabel: { color: colors.gray, fontSize: 12, marginBottom: 4 },
   statValue: { color: colors.white, fontSize: 16, fontWeight: "600" },
   statDivider: { height: 1, backgroundColor: colors.border },
-  performanceCard: { backgroundColor: colors.card, borderRadius: 16, marginHorizontal: 20, marginTop: 16, padding: 16 },
+  performanceCard: { borderRadius: 16, marginHorizontal: 20, marginTop: 16, padding: 16 },
   sectionTitle: { color: colors.white, fontSize: 16, fontWeight: "700", marginBottom: 12 },
   perfRow: { flexDirection: "row", justifyContent: "space-between", paddingVertical: 8 },
   perfLabel: { color: colors.gray, fontSize: 14 },

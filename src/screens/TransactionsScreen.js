@@ -4,6 +4,7 @@ import {
 } from "react-native";
 import { TRANSACTIONS } from "../data/transactions";
 import { colors } from "../utils/styles";
+import LiquidGlass from "../components/LiquidGlass";
 
 const typeColors = {
   BUY: "#00D4AA",
@@ -48,17 +49,17 @@ export default function TransactionsScreen() {
       </ScrollView>
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={s.summary}>
+        <LiquidGlass style={s.summary} intensity={45}>
           <Text style={s.summaryText}>{filtered.length} transactions</Text>
           <Text style={s.summaryText}>
             Total invested: ${TRANSACTIONS.filter(t => t.way === "BUY").reduce((a, t) => a + t.quote_amount, 0).toFixed(2)}
           </Text>
-        </View>
+        </LiquidGlass>
 
         {filtered.map((t, i) => {
           const accent = typeColors[t.way] || colors.gray;
           return (
-            <View key={i} style={s.txCard}>
+            <LiquidGlass key={i} style={s.txCard} intensity={40} radius={14}>
               <View style={[s.txIcon, { backgroundColor: accent + "22" }]}>
                 <Text style={[s.txIconText, { color: accent }]}>{t.way === "BUY" ? "↓" : t.way === "SELL" ? "↑" : t.way === "DEPOSIT" ? "+" : "-"}</Text>
               </View>
@@ -76,7 +77,7 @@ export default function TransactionsScreen() {
                 </Text>
                 <Text style={s.txExchange}>{t.exchange || "—"}</Text>
               </View>
-            </View>
+            </LiquidGlass>
           );
         })}
         <View style={{ height: 80 }} />

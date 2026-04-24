@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
+import LiquidGlass from "../../src/components/LiquidGlass";
 import { Tabs } from "expo-router";
 
 function TabIcon({ label, active, icon }) {
@@ -17,12 +18,16 @@ export default function TabsLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "#0A0A0A",
-          borderTopColor: "#1A1A1A",
-          borderTopWidth: 1,
+          backgroundColor: "transparent",
+          borderTopColor: "transparent",
+          borderTopWidth: 0,
           paddingTop: 8,
           height: 85,
           paddingBottom: 24,
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
         },
         tabBarActiveTintColor: "#00D4AA",
         tabBarInactiveTintColor: "#888",

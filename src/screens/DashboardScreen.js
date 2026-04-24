@@ -4,6 +4,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { AreaChart, DonutChart } from "../components/Charts";
+import LiquidGlass from "../components/LiquidGlass";
 import { HOLDINGS, CASH_BALANCE, generatePortfolioHistory } from "../data/holdings";
 import { useLivePrices, getPriceData } from "../hooks/useLivePrices";
 import { colors } from "../utils/styles";
@@ -80,13 +81,13 @@ export default function DashboardScreen({ navigation }) {
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 12 }}>
-        <View style={s.chartCard}>
+        <LiquidGlass style={s.chartCard} intensity={50}>
           <AreaChart
             data={history}
             color={isUp ? colors.green : colors.red}
             formatValue={v => `$${v.toFixed(0)}`}
           />
-        </View>
+        </LiquidGlass>
 
         <View style={s.section}>
           <View style={s.sectionHeader}>
@@ -95,7 +96,7 @@ export default function DashboardScreen({ navigation }) {
               <Text style={s.seeAll}>See All</Text>
             </TouchableOpacity>
           </View>
-          <View style={s.card}>
+          <LiquidGlass style={s.card} intensity={45}>
             {enriched.map((h, i) => (
               <TouchableOpacity
                 key={h.symbol}
@@ -119,28 +120,28 @@ export default function DashboardScreen({ navigation }) {
                 </View>
               </TouchableOpacity>
             ))}
-          </View>
+          </LiquidGlass>
         </View>
 
         <View style={s.section}>
           <View style={s.sectionHeader}>
             <Text style={s.sectionTitle}>Allocation</Text>
           </View>
-          <View style={s.card}>
+          <LiquidGlass style={s.card} intensity={45}>
             <DonutChart data={donutData} size={200} />
-          </View>
+          </LiquidGlass>
         </View>
 
         <View style={s.section}>
           <View style={s.sectionHeader}>
             <Text style={s.sectionTitle}>Buying Power</Text>
           </View>
-          <View style={s.card}>
+          <LiquidGlass style={s.card} intensity={45}>
             <View style={s.rowFull}>
               <Text style={s.rowLabel}>Cash Balance</Text>
               <Text style={s.rowValue}>{fmt$(CASH_BALANCE)}</Text>
             </View>
-          </View>
+          </LiquidGlass>
         </View>
 
         <View style={{ height: 100 }} />
@@ -168,7 +169,7 @@ const s = StyleSheet.create({
   sectionHeader: { flexDirection: "row", justifyContent: "space-between", marginBottom: 12 },
   sectionTitle: { color: colors.white, fontSize: 18, fontWeight: "700" },
   seeAll: { color: colors.accent, fontSize: 14, fontWeight: "600" },
-  card: { backgroundColor: colors.card, borderRadius: 16, overflow: "hidden" },
+  card: { borderRadius: 16, overflow: "hidden", marginBottom: 0 },
   holdingRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", padding: 14, borderBottomWidth: 1, borderBottomColor: colors.border },
   icon: { width: 36, height: 36, borderRadius: 18, alignItems: "center", justifyContent: "center" },
   iconText: { color: colors.white, fontSize: 12, fontWeight: "700" },
