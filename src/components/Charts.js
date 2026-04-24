@@ -1,7 +1,7 @@
 
 import React from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
-import Svg, { Path, Line, Defs, LinearGradient, Stop, Circle, Rect } from "react-native-svg";
+import Svg, { Path, Line, Defs, LinearGradient, Stop, Circle, Rect, Text as SvgText } from "react-native-svg";
 
 const { width: SCREEN_W } = Dimensions.get("window");
 const CHART_H = 220;
@@ -110,12 +110,12 @@ export function DonutChart({ data, size = 180 }) {
             origin={`${cx}, ${cy}`}
           />
         ))}
-        <Text x={cx} y={cy - 8} textAnchor="middle" fill="#FFF" fontSize="16" fontWeight="700">
+        <SvgText x={cx} y={cy - 8} textAnchor="middle" fill="#FFF" fontSize="16" fontWeight="700">
           ${total.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-        </Text>
-        <Text x={cx} y={cy + 14} textAnchor="middle" fill="#888" fontSize="11">
+        </SvgText>
+        <SvgText x={cx} y={cy + 14} textAnchor="middle" fill="#888" fontSize="11">
           Total Value
-        </Text>
+        </SvgText>
       </Svg>
       <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "center", marginTop: 12 }}>
         {data.map((d, i) => (
